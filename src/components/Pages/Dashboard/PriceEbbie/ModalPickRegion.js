@@ -16,19 +16,19 @@ const ModalPickRegion = ({isVisible, onBackdropPress, onPress, data}) => {
     <Modal style={styles.modal} isVisible={isVisible} onBackdropPress={onBackdropPress}>
       <View style={styles.contentModal}>
         <View style={[styles.row, {justifyContent: 'space-between', marginBottom: RFValue(10)}]}>
-          <Text style={[styles.text, {fontSize: RFValue(13), fontWeight: '600'}]}>Size</Text>
-          <Text style={[styles.text, {fontSize: RFValue(12), fontWeight: '600', color: '#145DA0'}]} onPress={onBackdropPress}>Tutup</Text>
+          <Text style={[styles.text, {fontSize: RFValue(13), fontWeight: '600', color:'#454646'}]}>Size</Text>
+          <Text style={[styles.text, {fontSize: RFValue(13), fontWeight: '600', color: '#1B77DF'}]} onPress={onBackdropPress}>Tutup</Text>
         </View>
         <View style={[styles.row, {justifyContent: 'space-between'}]}>
           <View style={styles.boxSearch}>
-            <Icon name='search' size={20} color="#BEBEBE" style={{position: 'absolute', top: RFValue(10), left: RFValue(10)}}/>
+            <Icon name='search' size={20} color="#A09E9E" style={{position: 'absolute', top: RFValue(10), left: RFValue(10)}}/>
             <SearchInput
               placeholder='Cari Alamat'
               style={styles.input}
               onChangeText={(val) => setInput(val)}
             />
           </View>
-          <Icon name='close-circle-sharp' size={25} color="#BEBEBE"/>
+          <Icon name='close-circle-sharp' size={25} color="#A09E9E"/>
         </View>
         <View style={[styles.line, {marginVertical: RFValue(15)}]}/>
         <FlatList
@@ -36,7 +36,7 @@ const ModalPickRegion = ({isVisible, onBackdropPress, onPress, data}) => {
           data={filtered}
           renderItem={(({ item }) => (
             <TouchableOpacity style={{paddingHorizontal: RFValue(15), marginBottom: RFValue(15)}} onPress={() => onPress(item)}>
-              <Text style={[styles.text, {fontSize: RFValue(13), fontWeight: '400'}]}>{item.full_name}</Text>
+              <Text style={[styles.text, {fontSize: RFValue(13), fontWeight: '400', color: '#454646'}]}>{item.full_name}</Text>
             </TouchableOpacity>
           ))}
         />
@@ -73,13 +73,16 @@ export const styles = StyleSheet.create({
   boxSearch: {
     width: '90%',
     height: RFValue(40),
-    backgroundColor: '#E9E8E8',
+    backgroundColor: '#F5F6F7',
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
     borderRadius: RFValue(5)
   },
   input: {
     height: RFValue(40),
     justifyContent: 'center',
-    paddingLeft: RFValue(30)
+    paddingLeft: RFValue(30),
+    color: '#A09E9E'
   }
 })
 

@@ -37,7 +37,7 @@ function DetailNewsEbbie({route}) {
     }
 
     return (
-        <Container barStyle={'dark-content'} backgroundColor="#145DA0">
+        <Container barStyle={'dark-content'} backgroundColor="#1B77DF">
             <HeaderApp tittle="Kabar Udang" share onPress={(val) => handleNavigationAppBar(val)}/>
             <ScrollView backgroundColor="white">
                 <View style={styles.container}>

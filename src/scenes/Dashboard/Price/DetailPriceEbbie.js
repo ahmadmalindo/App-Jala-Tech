@@ -6,12 +6,11 @@ import { base_uri_profile, url_link_shimp_price } from 'constants/BASE_URL';
 import { currencyFloat } from 'constants/functionGlobals';
 import moment from 'moment';
 import Icon from 'react-native-vector-icons/AntDesign';
-import Icon2 from 'react-native-vector-icons/FontAwesome5';
-import Icon3 from 'react-native-vector-icons/Ionicons';
 import { Container, HeaderApp } from 'components';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import call from 'react-native-phone-call'
 import Share from 'react-native-share';
+import LinearGradient from 'react-native-linear-gradient';
 
 
 function DetailPriceEbbie({route}) {
@@ -154,32 +153,36 @@ function DetailPriceEbbie({route}) {
     }
 
     return (
-        <Container barStyle={'dark-content'} backgroundColor="#145DA0">
+        <Container barStyle={'dark-content'} backgroundColor="#1B77DF">
             <HeaderApp tittle="Harga Udang" onPress={(val) => handleNavigationAppBar(val)} share/>
             <ScrollView backgroundColor="white" refreshControl={<RefreshControl refreshing={loading} onRefresh={getDetailPriceEbbie}/>}>
                 <View style={styles.container}>
                     <View style={{paddingHorizontal: RFValue(15)}}>
-                        <Text style={styles.textHead}>{detail?.region?.province_name}{'\n'}<Text style={{color: '#6c757d'}}>{detail?.region?.regency_name}</Text></Text>
+                        <Text style={styles.textHead}>{detail?.region?.province_name}{'\n'}<Text style={{color: '#737373'}}>{detail?.region?.regency_name}</Text></Text>
                     </View>
                     <View style={styles.line}/>
                     <View style={{paddingHorizontal: RFValue(15), paddingVertical: RFValue(10)}}>
                         <View style={[styles.row, {justifyContent: 'space-between', marginBottom: RFValue(10)}]}>
-                            <Text style={styles.tittle}>{moment(detail.created_at).format('DD MMM YYYY')}</Text>
-                            <View style={styles.border}>
-                                <Icon name='star' size={20} color="white" style={{marginRight: RFValue(3)}}/>
-                                <Text style={[styles.text, {color: 'white', fontSize: RFValue(11)}]}>{detail.creator?.email_verified == true ? "Terverivikasi" : "Tidak Terverivikasi"}</Text>
+                            <Text style={[styles.tittle, {color: '#737373'}]}>{moment(detail.created_at).format('DD MMM YYYY')}</Text>
+                            <View style={[styles.border, {backgroundColor: detail.creator?.email_verified == true ? '#FFF8E7' : '#E5E5E5'}]}>
+                              {detail?.creator?.email_verified == true &&
+                              <LinearGradient colors={['#FFD233', '#F6A62C']} style={[styles.circle, {marginRight: RFValue(3)}]}>
+                                <Icon name='star' size={14} color="white"/>
+                              </LinearGradient>
+                              }
+                              <Text style={[styles.text, {color: '#454646', fontSize: RFValue(11)}]}>{detail.creator?.email_verified == true ? "Terverivikasi" : "belum terverivikasi"}</Text>
                             </View>
                         </View>
                         <View style={[styles.row, {marginBottom: RFValue(15)}]}>
                             <Image source={{uri :`${base_uri_profile}${detail.creator?.avatar}`}} style={{width: RFValue(34), height: RFValue(34), borderRadius: RFValue(50)}}/>
                             <View style={{marginLeft: RFValue(10)}}>
-                                <Text style={[styles.text, {color: '#6c757d'}]}>{detail.creator?.role_id == 2 ? "Suplier" : "Pembeli"}</Text>
+                                <Text style={[styles.text, {color: '#737373'}]}>{detail.creator?.role_id == 2 ? "Suplier" : "Pembeli"}</Text>
                                 <Text style={styles.tittle}>{detail.creator?.name}</Text>
                             </View>
                         </View>
                         <View style={[styles.row, {justifyContent: 'space-between', marginBottom: RFValue(15)}]}>
                             <View>
-                                <Text style={[styles.text, {color: '#6c757d', marginBottom:RFValue(3)}]}>Kontak</Text>
+                                <Text style={[styles.text, {color: '#737373', marginBottom:RFValue(3)}]}>Kontak</Text>
                                 <Text style={[styles.tittle, {fontWeight: '600', fontSize: RFValue(14)}]}>{detail.creator?.phone}</Text>
                             </View>
                             <TouchableOpacity style={styles.btn} onPress={() => callPhone()}>
@@ -262,17 +265,17 @@ export const styles = StyleSheet.create({
   },
   border: {
     minWidth: RFValue(95),
-    height: RFValue(25),
-    backgroundColor: 'rgba(234, 179, 8, 0.8)',
+    height: RFValue(22),
+    backgroundColor: '#FFF8E7',
     paddingHorizontal: RFValue(5),
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: RFValue(10)
+    borderRadius: RFValue(20)
   },
   btn: {
     width: RFValue(80),
     height: RFValue(35),
-    backgroundColor: '#0E86D4',
+    backgroundColor: '#1B77DF',
     borderRadius: RFValue(5),
     justifyContent: 'center',
     alignItems: 'center'
@@ -298,6 +301,13 @@ export const styles = StyleSheet.create({
     backgroundColor: '#145DA0',
     justifyContent: 'center',
     paddingLeft: RFValue(15)
-  }
+  },
+  circle: {
+    width: RFValue(16),
+    height: RFValue(16),
+    borderRadius: RFValue(50),
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
 })
 

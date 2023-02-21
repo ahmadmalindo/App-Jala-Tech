@@ -54,13 +54,13 @@ function NewsEbbie() {
     <>
     <ScrollView backgroundColor='white' refreshControl={<RefreshControl refreshing={loading} onRefresh={getDataNews}/>}>
         <View style={styles.container}>
-          <Text style={[styles.textHead, {marginBottom: RFValue(15)}]}>Kabar Terbaru</Text>
+          <Text style={[styles.textHead, {marginBottom: RFValue(10)}]}>Kabar Terbaru</Text>
           <FlatList
             data={listNews}
             renderItem={(({item}) => {
 
               return (
-                <TouchableOpacity style={[styles.card, {marginBottom: RFValue(15)}]} onPress={() => navigation.navigate('DetailNewsEbbie', {id: item.id, item: item})}>
+                <TouchableOpacity style={[styles.card, {marginBottom: RFValue(10)}]} onPress={() => navigation.navigate('DetailNewsEbbie', {id: item.id, item: item})}>
                   <Image source={{uri: `${base_uri_profile}${item.image}`}} style={[styles.img]}/>
                   <View style={{paddingVertical: RFValue(10), paddingHorizontal: RFValue(10)}}>
                     <Text style={[styles.tittle, {marginBottom: RFValue(5)}]}>{item.seo_title}</Text>
@@ -95,22 +95,22 @@ export const styles = StyleSheet.create({
   },
   card: {
     width: '100%',
-    minHeight: Platform.OS == "android" ? RFValue(240) : RFValue(245),
-    borderWidth: Platform.OS == 'android' ? 0 : 1,
+    minHeight: Platform.OS == "android" ? RFValue(301) : RFValue(301),
+    borderWidth: Platform.OS == 'android' ? 1 : 1,
     borderRadius: RFValue(5),
-    borderColor: '#BEBEBE',
-    shadowColor: "#BEBEBE",
+    borderColor: '#E5E5E5',
+    shadowColor: "#E5E5E5",
     shadowOffset: {
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.5,
     shadowRadius: 1.00,
-    elevation: 1,
+    elevation: 4,
   },
   img: {
     width: '100%',
-    height: RFPercentage(23),
+    height: RFPercentage(26),
     resizeMode: 'cover'
   },
   tittle: {

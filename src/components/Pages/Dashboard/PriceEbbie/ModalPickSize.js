@@ -13,8 +13,8 @@ const ModalPickSize = ({isVisible, onBackdropPress, onPress}) => {
     <Modal style={styles.modal} isVisible={isVisible} onBackdropPress={onBackdropPress}>
       <View style={styles.contentModal}>
         <View style={[styles.row, {justifyContent: 'space-between', paddingHorizontal: RFValue(15)}]}>
-          <Text style={[styles.text, {fontSize: RFValue(13), fontWeight: '600'}]}>Size</Text>
-          <Text style={[styles.text, {fontSize: RFValue(12), fontWeight: '600', color: '#145DA0'}]} onPress={onBackdropPress}>Tutup</Text>
+          <Text style={[styles.text, {fontSize: RFValue(13), fontWeight: '600', color: '#454646'}]}>Size</Text>
+          <Text style={[styles.text, {fontSize: RFValue(13), fontWeight: '600', color: '#1B77DF'}]} onPress={onBackdropPress}>Tutup</Text>
         </View>
         <View style={[styles.line, {marginVertical: RFValue(15)}]}/>
         <FlatList
@@ -22,7 +22,7 @@ const ModalPickSize = ({isVisible, onBackdropPress, onPress}) => {
           data={size}
           renderItem={(({item}) => (
             <TouchableOpacity style={{paddingHorizontal: RFValue(15), marginBottom: RFValue(15)}} onPress={() => onPress(item)}>
-              <Text style={[styles.text, {fontSize: RFValue(13), fontWeight: '400'}]}>{item}</Text>
+              <Text style={[styles.text, {fontSize: RFValue(13), fontWeight: '400', color: '#454646'}]}>{item}</Text>
             </TouchableOpacity>
           ))}
         />

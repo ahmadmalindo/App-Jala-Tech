@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
   view: {
     width: '100%',
     height: RFValue(60),
-    backgroundColor: '#145DA0',
+    backgroundColor: '#1B77DF',
     paddingHorizontal: RFValue(15),
     justifyContent: 'center'
   },
