@@ -12,7 +12,6 @@ import call from 'react-native-phone-call'
 import Share from 'react-native-share';
 import LinearGradient from 'react-native-linear-gradient';
 
-
 function DetailPriceEbbie({route}) {
 
     const focused = useIsFocused()
